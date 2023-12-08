@@ -6,7 +6,7 @@
 /*   By: mawad <mawad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:19:13 by mawad             #+#    #+#             */
-/*   Updated: 2023/11/24 23:37:17 by mawad            ###   ########.fr       */
+/*   Updated: 2023/12/05 20:10:53 by mawad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "ft_printf/ft_printf.h"
+# include "ft_fprintf/ft_fprintf.h"
 
 typedef struct s_stack
 {
@@ -67,15 +67,6 @@ char			*join_args(int argc, char *argv[]);
 
 //stack_spawn.c
 t_stack			*stack_spawn(long long int *numbers, int size);
-
-//print_checks.c
-void			print_stack(t_stack *head);
-void			pro_print_stack(t_stack *head);
-void			print_both(t_stack *a, t_stack *b);
-void			print_price(t_stack *head);
-void			print_index(t_stack *head);
-void			print_targets(t_stack *b);
-void			print_cheapest(t_stack *b);
 
 //move_nodes
 void			move_nodes_b2a(t_stack **a, t_stack **b);

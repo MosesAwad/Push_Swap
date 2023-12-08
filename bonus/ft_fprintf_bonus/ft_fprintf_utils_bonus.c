@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils_bonus.c                            :+:      :+:    :+:   */
+/*   ft_fprintf_utils_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mawad <mawad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:58:44 by mawad             #+#    #+#             */
-/*   Updated: 2023/11/24 19:43:55 by mawad            ###   ########.fr       */
+/*   Updated: 2023/12/05 17:30:33 by mawad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_bonus.h"
+#include "ft_fprintf_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -40,16 +40,16 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-void	ft_putchar(char c)
+void	ft_putchar(int fd, char c)
 {
-	write(1, &c, 1);
+	write(fd, &c, 1);
 }
 
-void	ft_putstr(char *str)
+void	ft_putstr(int fd, char *str)
 {
 	while (*str)
 	{
-		write(1, str, 1);
+		write(fd, str, 1);
 		str++;
 	}
 }

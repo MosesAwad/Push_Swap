@@ -1,67 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_nbr_bonus.c                               :+:      :+:    :+:   */
+/*   ft_print_unsigned_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mawad <mawad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 19:24:16 by mawad             #+#    #+#             */
-/*   Updated: 2023/11/24 23:35:18 by mawad            ###   ########.fr       */
+/*   Updated: 2023/12/05 17:30:48 by mawad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_bonus.h"
+#include "ft_fprintf_bonus.h"
 
-static int	num_len(int nb)
+static int	unsigned_len(unsigned int nb)
 {
 	int	count;
-	int	flag;
 
 	count = 0;
-	flag = 0;
-	if (nb == -2147483648)
-		return (11);
-	if (nb < 0)
-	{
-		nb *= -1;
-		flag = 1;
-	}
 	while (nb >= 10)
 	{
 		nb = nb / 10;
 		count++;
 	}
-	if (flag)
-		return (count + 2);
-	else
-		return (count + 1);
+	return (count + 1);
 }
 
-static void	put_nbr(int nb)
+static void	put_unsigned(int fd, unsigned int nb)
 {
-	if (nb == -2147483648)
-	{
-		ft_putstr("-2");
-		nb = 147483648;
-	}
-	if (nb < 0)
-	{
-		nb *= -1;
-		ft_putchar('-');
-	}
 	if (nb >= 10)
 	{
-		put_nbr(nb / 10);
-		put_nbr(nb % 10);
+		put_unsigned(fd, nb / 10);
+		put_unsigned(fd, nb % 10);
 	}
 	else
 	{
-		ft_putchar(nb + 48);
+		ft_putchar(fd, nb + 48);
 	}
 }
 
-int	ft_print_nbr(int nb)
+int	ft_print_unsigned(int fd, unsigned int nb)
 {
-	put_nbr(nb);
-	return (num_len(nb));
+	put_unsigned(fd, nb);
+	return (unsigned_len(nb));
 }

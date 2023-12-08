@@ -6,7 +6,7 @@
 /*   By: mawad <mawad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 20:18:32 by mawad             #+#    #+#             */
-/*   Updated: 2023/11/25 20:07:04 by mawad            ###   ########.fr       */
+/*   Updated: 2023/12/07 16:17:31 by mawad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ void	destroy_stack(t_stack *head)
 	free(head);
 }
 
+void	destroy_helper(t_stack *a, long long int *numbers)
+{
+	destroy_stack(a);
+	free(numbers);
+}
+
 int	main(int argc, char *argv[])
 {
 	long long int	*numbers;
@@ -48,18 +54,14 @@ int	main(int argc, char *argv[])
 		return (free(numbers), 1);
 	stack_a = stack_spawn(numbers, size);
 	stack_b = NULL;
-	if (check_stacks(stack_a, stack_b) == 2)
-		return (ft_printf("OK\n"),
-			destroy_stack(stack_a), free(numbers), 1);
 	if (!execute_moves(&stack_a, &stack_b))
-		return (write(1, "KO\n", 3), 1);
+		return (destroy_helper(stack_a, numbers), destroy_stack(stack_b), 1);
 	if (check_stacks(stack_a, stack_b) != 2)
 	{
-		write(1, "KO\n", 3);
-		if (check_stacks(stack_a, stack_b) == 1)
-			destroy_stack(stack_b);
+		ft_fprintf(1, "KO\n");
+		destroy_stack(stack_b);
 	}
 	else
-		write(1, "OK\n", 3);
+		ft_fprintf(1, "OK\n");
 	return (destroy_stack(stack_a), free(numbers), 0);
 }

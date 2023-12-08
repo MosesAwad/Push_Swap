@@ -6,7 +6,7 @@
 /*   By: mawad <mawad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 15:53:18 by mawad             #+#    #+#             */
-/*   Updated: 2023/11/25 22:21:12 by mawad            ###   ########.fr       */
+/*   Updated: 2023/12/05 18:43:14 by mawad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,18 +80,4 @@ int	ft_fprintf(int fd, const char *str, ...)
 	}
 	va_end(args);
 	return (len);
-}
-#include<fcntl.h>
-int main()
-{
-	int fd;
-
-	fd = open("hi.txt", O_WRONLY);
-	if (fd == -1)
-	{
-		ft_fprintf(2, "Error\n");
-		return (1);
-	}
-	ft_fprintf(fd, "Hi hahahahah%d%X\n", 1234, 157898789789);
-	close(fd);
 }

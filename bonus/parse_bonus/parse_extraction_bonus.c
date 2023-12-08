@@ -6,7 +6,7 @@
 /*   By: mawad <mawad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 23:57:22 by mawad             #+#    #+#             */
-/*   Updated: 2023/11/24 23:34:46 by mawad            ###   ########.fr       */
+/*   Updated: 2023/12/05 17:32:05 by mawad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ long long int	*get_numbers(int argc, char *argv[], int *size)
 	if (argc > 2)
 		free(result);
 	if (check_numeric(arguments) == 0)
-		return (ft_printf("Error\nNon-numeric character present"), NULL);
+		return (ft_fprintf(2, "Error\nNon-numeric character present"), NULL);
 	if (check_only_signs(arguments) == 1)
-		return (ft_printf("Error\nSign must be followed by digit"), NULL);
+		return (ft_fprintf(2, "Error\nSign must be followed by digit"), NULL);
 	digits = extract_numbers(arguments, size);
 	return (digits);
 }

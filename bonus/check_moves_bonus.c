@@ -6,7 +6,7 @@
 /*   By: mawad <mawad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 21:28:26 by mawad             #+#    #+#             */
-/*   Updated: 2023/11/25 19:56:37 by mawad            ###   ########.fr       */
+/*   Updated: 2023/12/07 16:16:59 by mawad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,10 @@ int	execute_moves(t_stack **a, t_stack **b)
 
 	str = get_next_line(0);
 	if (!str)
-		return (0);
+		return (1);
 	if (!check_moves(a, b, str))
-		return (0);
+		return (ft_fprintf(2, "Error\nInvalid instruction or wrong format"),
+			free(str), 0);
 	free(str);
 	while (str)
 	{
@@ -57,7 +58,8 @@ int	execute_moves(t_stack **a, t_stack **b)
 		if (!str)
 			break ;
 		if (!check_moves(a, b, str))
-			return (0);
+			return (ft_fprintf(2, "Error\nInvalid instruction or wrong format"),
+				free(str), 0);
 		free(str);
 	}
 	return (1);
